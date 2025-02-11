@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandatory.c                                        :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 10:45:27 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/10 20:12:53 by aychikhi         ###   ########.fr       */
+/*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
+/*   Updated: 2025/02/11 10:18:36 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-
-int	main(int ac, char **av)
-{
-	t_philosopher	*philo;
-	t_data			*data;
-	pthread_t		monitor_thread;
-
-	if (ac < 5 || ac > 6)
-		error_mess();
-	check_args(av, ac);
-	return (0);
-}
