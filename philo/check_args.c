@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:06:58 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/09 18:32:52 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:57:38 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
 void	error_mess(void)
 {
@@ -68,7 +68,7 @@ void	check_args(char **av, int l)
 		error_mess();
 	while (i++ < l - 1)
 	{
-		if (!av[i][0])
+		if (!av[i][0] || ft_atoi(av[i]) == 0)
 			error_mess();
 		is_empty(av[i]);
 		check(av[i]);
