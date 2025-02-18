@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:45:43 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/11 17:52:10 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:49:19 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_data
 	int						time_to_eat;
 	int						time_to_sleep;
 	int						must_eat_count;
-	long					start_time;
+	size_t					start_time;
 	pthread_mutex_t			print_mutex;
 	pthread_mutex_t			mutex;
 	int						stop_simulation;
@@ -38,21 +38,23 @@ typedef struct s_philosopher
 	int				id;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
-	long			last_meal_time;
+	size_t			last_meal_time;
 	pthread_mutex_t	meal_time_mutex;
 	int				meal_count;
 	pthread_t		thread;
 	t_data			*data;
 }					t_philosopher;
 
-void	just_one(t_data *data);
+void last_meal_change(t_philosopher *philo, int last_meal);
+int last_meal_read(t_philosopher *philo);
 void	error_mess(void);
 void	check(char *ptr);
 int		ft_isdigit(int c);
 int		ft_isspace(int c);
 int		ft_atoi(char *str);
 void	is_empty(char *str);
-long	get_current_time(void);
+void	just_one(t_data *data);
+size_t	get_current_time(void);
 void	*philo_routine(void *arg);
 void	check_max_int(char *str);
 void	eat(t_philosopher *philo);
@@ -68,7 +70,10 @@ void	check_death(t_philosopher *philo);
 void	put_down_fork(t_philosopher *philo);
 void	pick_up_forks(t_philosopher *philo);
 void	create_threads(t_philosopher *philo);
+int		simulation_read(t_philosopher *philo);
+int		ft_strcmp(const char *s1, const char *s2);
 void	philo_init(t_philosopher *philo, t_data *data);
 void	print_status(t_philosopher *philo, char *status);
+void	simulation_change(t_philosopher *philo, int simulation);
 
 #endif

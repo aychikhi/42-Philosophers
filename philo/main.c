@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:45:27 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/12 11:22:00 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:44:11 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	philo_init(t_philosopher *philo, t_data *data)
 	while (data->num_philo > i)
 	{
 		philo[i].id = i + 1;
-		philo[i].last_meal_time = 0;
 		philo[i].meal_count = 0;
 		philo[i].data = data;
 		pthread_mutex_init(&philo[i].left_fork, NULL);
@@ -91,15 +90,22 @@ void	create_threads(t_philosopher *philo)
 	i = 0;
 	while (i < philo->data->num_philo)
 	{
+		last_meal_change(&philo[i], get_current_time());
 		pthread_create(&philo[i].thread, NULL, philo_routine, &philo[i]);
 		i++;
 	}
-	if (philo->data->num_philo != 1)
-		check_death(philo);
+	check_death(philo);
 	i = 0;
 	while (i < philo->data->num_philo)
 	{
-		pthread_join(philo[i].thread, NULL);
+		if (pthread_join(philo[i].thread, NULL))
+			break;
+		i++;
+	}
+	i = 0;
+	while (i < philo->data->num_philo)
+	{
+		pthread_detach(philo[i].thread);
 		i++;
 	}
 }
@@ -118,8 +124,6 @@ int	main(int ac, char **av)
 	philo = malloc (sizeof(t_philosopher) * data->num_philo);
 	if (!philo)
 		return (1);
-	pthread_mutex_init(&data->print_mutex, NULL);
-	pthread_mutex_init(&data->mutex, NULL);
 	philo_init(philo, data);
 	create_threads(philo);
 	free_fun(philo);
