@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/11 20:23:01 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:26:55 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	check_death(t_philosopher *philo)
 				{
 					print_status(&philo[i], "died");
 					philo->data->stop_simulation = 1;
+					// break;
 				}
 				pthread_mutex_unlock(&philo->data->stop_mutex);
 				pthread_mutex_unlock(&philo[i].meal_time_mutex);
