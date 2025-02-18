@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:09:39 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/09 18:55:14 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:22:58 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../philosopher.h"
 
 int	ft_atoi(char *str)
 {

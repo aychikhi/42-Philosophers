@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:06:58 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/11 15:57:38 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:23:36 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "philosopher.h"
 
 void	error_mess(void)
 {

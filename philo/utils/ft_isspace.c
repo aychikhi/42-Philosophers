@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:31:33 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/09 16:31:36 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:23:10 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../philosopher.h"
 
 int	ft_isspace(int c)
 {

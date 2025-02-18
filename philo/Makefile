@@ -8,7 +8,7 @@ OBJ = $(SRC:.c=.o)
 
 all: philo
 
-philo: $(OBJ) header.h
+philo: $(OBJ) philosopher.h
 	$(CC) $(CFLAGS) $(OBJ) -o philo
 
 clean:
