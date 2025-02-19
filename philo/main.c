@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:45:27 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:43:38 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:29:29 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void	create_threads(t_philosopher *philo)
 		pthread_create(&philo[i].thread, NULL, philo_routine, &philo[i]);
 		i++;
 	}
-	if (philo->data->must_eat_count == -1)
-		check_death(philo);
+	check_death(philo);
 	i = 0;
 	while (i < philo->data->num_philo)
 	{

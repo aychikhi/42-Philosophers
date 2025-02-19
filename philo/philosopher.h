@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:45:43 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:24:43 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:37:08 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_data
 	int						time_to_eat;
 	int						time_to_sleep;
 	int						must_eat_count;
+	int						flag;
 	size_t					start_time;
 	pthread_mutex_t			print_mutex;
 	pthread_mutex_t			mutex;
@@ -52,8 +53,8 @@ int		ft_isspace(int c);
 int		ft_atoi(char *str);
 void	is_empty(char *str);
 size_t	get_current_time(void);
-void	*philo_routine(void *arg);
 void	check_max_int(char *str);
+void	*philo_routine(void *arg);
 void	eat(t_philosopher *philo);
 void	think(t_philosopher *philo);
 void	check_args(char **av, int l);
@@ -63,6 +64,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	just_one(t_philosopher *philo);
 void	free_fun(t_philosopher *philo);
 void	ft_putendl_fd(char *s, int fd);
+int		flag_read(t_philosopher *philo);
 void	sleep_philo(t_philosopher *philo);
 void	check_death(t_philosopher *philo);
 void	put_down_fork(t_philosopher *philo);
@@ -72,6 +74,7 @@ void	create_threads(t_philosopher *philo);
 int		simulation_read(t_philosopher *philo);
 void	ft_usleep(t_philosopher *philo, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
+void	flag_change(t_philosopher *philo, int flag1);
 void	philo_init(t_philosopher *philo, t_data *data);
 void	print_status(t_philosopher *philo, char *status);
 void	simulation_change(t_philosopher *philo, int simulation);
