@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/01 13:24:31 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/01 15:28:09 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	*philo_routine(void *arg)
 			flag_change(philo, 1);
 			break ;
 		}
-		if (philo->data->stop_simulation)
+		if (simulation_read(philo))
 			break ;
 	}
 	return (NULL);
