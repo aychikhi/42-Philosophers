@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:45:27 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/19 11:29:29 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/01 13:20:13 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_data	*data_init(int ac, char **av)
 	data->time_to_sleep = ft_atoi(av[4]);
 	data->start_time = get_current_time();
 	data->stop_simulation = 0;
+	data->flag = 0;
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->mutex, NULL);
 	pthread_mutex_init(&data->stop_mutex, NULL);
@@ -111,11 +112,12 @@ int	main(int ac, char **av)
 	data = data_init(ac, av);
 	philo = malloc(sizeof(t_philosopher) * data->num_philo);
 	if (!philo)
-		return (1);
+		return (free(data), 1);
 	philo_init(philo, data);
 	if (data->num_philo == 1)
 		just_one(philo);
-	create_threads(philo);
+	else
+		create_threads(philo);
 	free_fun(philo);
 	return (0);
 }

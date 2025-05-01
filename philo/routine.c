@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/19 11:36:54 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/01 13:24:31 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_usleep(t_philosopher *philo, size_t n)
 void	print_status(t_philosopher *philo, char *status)
 {
 	size_t	timestamps;
-
+	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!simulation_read(philo))
 	{
 		timestamps = get_current_time() - philo->data->start_time;
@@ -44,6 +44,7 @@ void	print_status(t_philosopher *philo, char *status)
 	}
 	if (!ft_strcmp(status, "died"))
 		simulation_change(philo, 1);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 void	check_death(t_philosopher *philo)
@@ -82,7 +83,7 @@ void	*philo_routine(void *arg)
 	philo = (t_philosopher *)arg;
 	if (philo->id % 2 == 0)
 		sleep_philo(philo);
-	while (1337)
+	while (!simulation_read(philo))
 	{
 		think(philo);
 		pick_up_forks(philo);
