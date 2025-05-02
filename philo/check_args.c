@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aychikhi <aychikhi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:06:58 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/24 15:24:31 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/01 16:45:17 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-
-void	error_mess(void)
-{
-	ft_putendl_fd("Error: invalid arguments", 2);
-	exit(1);
-}
 
 void	is_empty(char *str)
 {

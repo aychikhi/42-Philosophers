@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/01 15:28:09 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:06:43 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_usleep(t_philosopher *philo, size_t n)
 void	print_status(t_philosopher *philo, char *status)
 {
 	size_t	timestamps;
+
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!simulation_read(philo))
 	{
