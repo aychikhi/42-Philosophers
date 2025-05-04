@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:44:34 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/02 12:47:34 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/04 12:54:04 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	eat(t_philo *philo)
 {
 	sem_wait(philo->data->death);
 	philo->last_meal = get_current_time();
-	sem_post(philo->data->death);
 	print_status(philo, "is eating");
 	philo->meal_count++;
+	sem_post(philo->data->death);
 	ft_usleep(philo->data->time_to_eat);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:34:06 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/02 12:55:54 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/04 13:34:11 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ void	*check_death(void *arg)
 {
 	t_philo	*philo;
 	size_t	current_time;
+	size_t	last_meal_time;
 
 	philo = (t_philo *)arg;
 	while (1)
 	{
 		sem_wait(philo->data->death);
 		current_time = get_current_time();
-		if (current_time - philo->last_meal > (size_t)philo->data->time_to_die)
+		last_meal_time = philo->last_meal;
+		if (current_time - last_meal_time > (size_t)philo->data->time_to_die)
 		{
 			sem_wait(philo->data->print);
 			printf("%zu %d died\n", current_time - philo->data->start_time,
@@ -49,7 +51,7 @@ void	*check_death(void *arg)
 			exit(1);
 		}
 		sem_post(philo->data->death);
-		ft_usleep(1000);
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -57,7 +59,6 @@ void	*check_death(void *arg)
 void	philo_routine(t_philo *philo)
 {
 	pthread_t	death_thread;
-
 	philo->last_meal = get_current_time();
 	if (pthread_create(&death_thread, NULL, check_death, philo) != 0)
 		exit(1);
