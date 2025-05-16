@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:34:06 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/04 13:34:11 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:01:57 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	*check_death(void *arg)
 void	philo_routine(t_philo *philo)
 {
 	pthread_t	death_thread;
+
 	philo->last_meal = get_current_time();
-	if (pthread_create(&death_thread, NULL, check_death, philo) != 0)
-		exit(1);
+	pthread_create(&death_thread, NULL, check_death, philo);
 	pthread_detach(death_thread);
 	if (philo->id % 2 == 0)
 		sleep_philo(philo);

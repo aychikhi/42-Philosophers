@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:14:38 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/03 11:47:53 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:52:07 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	semaphore_init(t_data *data)
 	data->death = sem_open("/death", O_CREAT, 0644, 1);
 	if (data->fork == SEM_FAILED || data->print == SEM_FAILED
 		|| data->death == SEM_FAILED)
+	{
+		free(data);
 		exit(1);
+	}
 }
 
 void	start_process(t_data *data)
@@ -50,9 +53,9 @@ void	start_process(t_data *data)
 	int		i;
 	t_philo	philo;
 
-	i = 0;
+	i = -1;
 	data->start_time = get_current_time();
-	while (i < data->num_philo)
+	while (++i < data->num_philo)
 	{
 		data->pid[i] = fork();
 		if (data->pid[i] == 0)
@@ -65,8 +68,8 @@ void	start_process(t_data *data)
 				philo_routine(&philo);
 		}
 		else if (data->pid < 0)
-			exit(1);
-		i++;
+			break;
+			// exit(1);
 	}
 	wait_processes(data);
 }
