@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:34:06 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/15 17:01:57 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/18 10:58:25 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_usleep(size_t n)
 
 	end = get_current_time() + n;
 	while (get_current_time() < end)
-		usleep(100);
+		usleep(200);
 }
 
 void	*check_death(void *arg)
@@ -51,7 +51,7 @@ void	*check_death(void *arg)
 			exit(1);
 		}
 		sem_post(philo->data->death);
-		usleep(1000);
+		usleep(100);
 	}
 	return (NULL);
 }

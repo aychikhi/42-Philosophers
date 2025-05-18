@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/09 17:28:01 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/17 19:05:03 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_usleep(t_philosopher *philo, size_t n)
 	{
 		if (simulation_read(philo))
 			break ;
-		usleep(100);
+		usleep(200);
 	}
 }
 
@@ -66,15 +66,12 @@ void	check_death(t_philosopher *philo)
 			time_diff = current_time - last_meal_read(&philo[i]);
 			if (time_diff > (size_t)philo->data->time_to_die)
 			{
-				// if (!simulation_read(philo))
-				// {
 				print_status(&philo[i], "died");
 				return ;
-				// }
 			}
 		}
 	}
-	ft_usleep(philo, 10);
+	// ft_usleep(philo, 10);
 }
 
 void	*philo_routine(void *arg)

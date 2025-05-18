@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:14:38 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/16 12:52:07 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/18 10:53:12 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ void	semaphore_init(t_data *data)
 	data->death = sem_open("/death", O_CREAT, 0644, 1);
 	if (data->fork == SEM_FAILED || data->print == SEM_FAILED
 		|| data->death == SEM_FAILED)
-	{
-		free(data);
 		exit(1);
-	}
 }
 
 void	start_process(t_data *data)
@@ -68,8 +65,7 @@ void	start_process(t_data *data)
 				philo_routine(&philo);
 		}
 		else if (data->pid < 0)
-			break;
-			// exit(1);
+			break ;
 	}
 	wait_processes(data);
 }
