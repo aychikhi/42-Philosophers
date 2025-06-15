@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:31:45 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:23:07 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:05:09 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosopher.h"
+#include "../philo.h"
 
 int	ft_isdigit(int c)
 {

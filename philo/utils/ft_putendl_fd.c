@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:07:22 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:23:20 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:04:56 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosopher.h"
+#include "../philo.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

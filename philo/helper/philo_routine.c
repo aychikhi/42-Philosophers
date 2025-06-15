@@ -1,54 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 20:05:05 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/17 19:05:03 by aychikhi         ###   ########.fr       */
+/*   Created: 2025/05/16 15:20:29 by aychikhi          #+#    #+#             */
+/*   Updated: 2025/05/21 15:21:40 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosopher.h"
+#include "../philo.h"
 
-size_t	get_current_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
-void	ft_usleep(t_philosopher *philo, size_t n)
+void	ft_usleep(t_philo *philo, size_t time_to_sleep)
 {
 	size_t	end;
 
-	end = get_current_time() + n;
+	(void)philo;
+	end = get_current_time() + time_to_sleep;
 	while (get_current_time() < end)
 	{
-		if (simulation_read(philo))
+		if (read_simulation(philo))
 			break ;
 		usleep(200);
 	}
 }
 
-void	print_status(t_philosopher *philo, char *status)
+void	print_status(t_philo *philo, char *status)
 {
 	size_t	timestamps;
 
 	pthread_mutex_lock(&philo->data->print_mutex);
-	if (!simulation_read(philo))
+	if (!read_simulation(philo))
 	{
 		timestamps = get_current_time() - philo->data->start_time;
-		printf("%zu %d %s\n", timestamps, philo->id, status);
+		printf("%zu %d %s\n", timestamps, philo->philo_id, status);
 	}
 	if (!ft_strcmp(status, "died"))
-		simulation_change(philo, 1);
+		change_simulation(philo, 1);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
-void	check_death(t_philosopher *philo)
+void	check_death(t_philo *philo)
 {
 	int		i;
 	size_t	time_diff;
@@ -58,12 +51,12 @@ void	check_death(t_philosopher *philo)
 	while (07)
 	{
 		i = -1;
-		while (philo->data->num_philo > ++i)
+		while (philo->data->philo_num > ++i)
 		{
-			if (flag_read(philo))
+			if (read_flag(philo))
 				return ;
 			current_time = get_current_time();
-			time_diff = current_time - last_meal_read(&philo[i]);
+			time_diff = current_time - read_last_meal_time(&philo[i]);
 			if (time_diff > (size_t)philo->data->time_to_die)
 			{
 				print_status(&philo[i], "died");
@@ -71,31 +64,28 @@ void	check_death(t_philosopher *philo)
 			}
 		}
 	}
-	// ft_usleep(philo, 10);
 }
 
 void	*philo_routine(void *arg)
 {
-	t_philosopher	*philo;
+	t_philo	*philo;
 
-	philo = (t_philosopher *)arg;
-	if (philo->id % 2 == 0)
+	philo = (t_philo *)arg;
+	if (philo->philo_id % 2 == 0)
 		sleep_philo(philo);
-	while (!simulation_read(philo))
+	while (!read_simulation(philo))
 	{
 		think(philo);
 		pick_up_forks(philo);
 		eat(philo);
-		put_down_fork(philo);
+		put_down_forks(philo);
 		sleep_philo(philo);
-		if (philo->data->must_eat_count != -1
-			&& philo->meal_count >= philo->data->must_eat_count)
+		if (philo->data->must_eat_num != -1
+			&& philo->meal_count >= philo->data->must_eat_num)
 		{
-			flag_change(philo, 1);
+			change_flag(philo, 1);
 			break ;
 		}
-		if (simulation_read(philo))
-			break ;
 	}
 	return (NULL);
 }

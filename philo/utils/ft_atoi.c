@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 18:09:39 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:22:58 by aychikhi         ###   ########.fr       */
+/*   Created: 2025/05/16 13:04:09 by aychikhi          #+#    #+#             */
+/*   Updated: 2025/05/16 13:05:14 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosopher.h"
+#include "../philo.h"
 
 int	ft_atoi(char *str)
 {

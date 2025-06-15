@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:31:52 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/02 12:47:05 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/18 11:27:51 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	check(char *ptr);
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
 int		ft_atoi(char *str);
+void	ft_usleep(size_t n);
 void	eat(t_philo *philo);
 void	is_empty(char *str);
 void	think(t_philo *philo);
@@ -70,7 +71,6 @@ void	philo_routine(t_philo *philo);
 t_data	*data_init(int ac, char **av);
 void	ft_putendl_fd(char *s, int fd);
 void	put_down_forks(t_philo *philo);
-void	ft_usleep(size_t n);
 void	print_status(t_philo *philo, char *status);
 
 #endif

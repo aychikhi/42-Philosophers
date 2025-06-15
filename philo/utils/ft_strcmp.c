@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:38:40 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/02/18 18:27:16 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:04:41 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosopher.h"
+#include "../philo.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

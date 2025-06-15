@@ -6,11 +6,11 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:44:34 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/04 12:54:04 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/18 11:28:54 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 void	think(t_philo *philo)
 {

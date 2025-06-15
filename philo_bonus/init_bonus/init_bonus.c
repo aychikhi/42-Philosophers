@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:14:38 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/18 10:53:12 by aychikhi         ###   ########.fr       */
+/*   Created: 2025/05/18 11:35:02 by aychikhi          #+#    #+#             */
+/*   Updated: 2025/05/18 11:35:41 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 t_data	*data_init(int ac, char **av)
 {
@@ -61,27 +61,10 @@ void	start_process(t_data *data)
 			philo.meal_count = 0;
 			philo.data = data;
 			philo.last_meal = get_current_time();
-			if (!data->pid[i])
-				philo_routine(&philo);
+			philo_routine(&philo);
 		}
 		else if (data->pid < 0)
 			break ;
 	}
 	wait_processes(data);
-}
-
-int	main(int ac, char **av)
-{
-	t_data	*data;
-
-	if (ac > 6 || ac < 5)
-		error_mess();
-	check_args(av, ac);
-	data = data_init(ac, av);
-	if (!data)
-		return (1);
-	semaphore_init(data);
-	start_process(data);
-	clean_fun(data);
-	return (0);
 }

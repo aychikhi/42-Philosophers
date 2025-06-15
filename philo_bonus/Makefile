@@ -1,8 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main_bonus.c philo_utils_bonus.c check_args_bonus.c routine_bonus.c routine_utils_bonus.c ./utils_bonus/ft_isspace.c ./utils_bonus/ft_isdigit.c\
-		./utils_bonus/ft_atoi.c ./utils_bonus/ft_putchar_fd.c ./utils_bonus/ft_putendl_fd.c ./utils_bonus/ft_putstr_fd.c\
+SRC = philo_bonus.c ./helper_bonus/philo_utils_bonus.c ./parser_bonus/parser_bonus.c ./helper_bonus/philo_routine_bonus.c ./helper_bonus/philo_routine_utils_bonus.c ./init_bonus/init_bonus.c\
+		./utils_bonus/ft_isspace.c ./utils_bonus/ft_isdigit.c ./utils_bonus/ft_atoi.c ./utils_bonus/ft_putchar_fd.c ./utils_bonus/ft_putendl_fd.c ./utils_bonus/ft_putstr_fd.c\
 
 OBJ = $(SRC:.c=.o)
 

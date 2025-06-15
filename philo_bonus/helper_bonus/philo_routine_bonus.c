@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine_bonus.c                                    :+:      :+:    :+:   */
+/*   philo_routine_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:34:06 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/18 10:58:25 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:15:44 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 void	print_status(t_philo *philo, char *status)
 {
@@ -67,6 +67,7 @@ void	philo_routine(t_philo *philo)
 		sleep_philo(philo);
 	while (1)
 	{
+		think(philo);
 		pick_up_forks(philo);
 		eat(philo);
 		put_down_forks(philo);
@@ -74,6 +75,5 @@ void	philo_routine(t_philo *philo)
 			&& philo->meal_count >= philo->data->must_eat_count)
 			exit(0);
 		sleep_philo(philo);
-		think(philo);
 	}
 }
