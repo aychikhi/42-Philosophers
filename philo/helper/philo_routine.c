@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:20:29 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/21 15:21:40 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:31:05 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_usleep(t_philo *philo, size_t time_to_sleep)
 	{
 		if (read_simulation(philo))
 			break ;
-		usleep(200);
+		usleep(1000);
 	}
 }
 
