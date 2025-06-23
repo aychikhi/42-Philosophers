@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:34:06 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/06/23 10:31:31 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:31:54 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_usleep(size_t n)
 
 	end = get_current_time() + n;
 	while (get_current_time() < end)
-		usleep(200);
+		usleep(1000);
 }
 
 void	*check_death(void *arg)
