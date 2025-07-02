@@ -6,7 +6,7 @@
 /*   By: aychikhi <aychikhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 11:35:02 by aychikhi          #+#    #+#             */
-/*   Updated: 2025/05/18 11:35:41 by aychikhi         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:53:16 by aychikhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	start_process(t_data *data)
 			philo.last_meal = get_current_time();
 			philo_routine(&philo);
 		}
-		else if (data->pid < 0)
+		else if (data->pid[i] < 0)
 			break ;
 	}
 	wait_processes(data);
